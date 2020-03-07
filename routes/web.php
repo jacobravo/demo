@@ -6,6 +6,8 @@ Route::get('/', 'LoginController@index')->name('/');
 
 Route::post('login', 'LoginController@login')->name('login');
 
+Route::get('logout', 'LoginController@logout')->name('logout');
+
 Route::get('redirigir', 'TicketController@index')->name('redirigir');
 
 Route::get('gestionTickets', 'TicketController@gestionIndex')->name('gestionTickets');

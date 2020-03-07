@@ -6,16 +6,14 @@ use Exception;
 use App\Models\Ticket;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use App\Http\Middleware\LogControl;
 use Illuminate\Support\Facades\Session;
 
 class TicketController extends Controller
 {
     public function __construct(){
 
-        if(Session::get('usuario') == null){
-
-            return redirect()->route('login');
-        }
+        $this->middleware(LogControl::class);
     }
 
     public function index(){

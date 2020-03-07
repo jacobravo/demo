@@ -27,8 +27,14 @@ class LoginController extends Controller
             return redirect()->route('redirigir');
         }
         else{
+
             return view('login');
         }
+    }
 
+    public function logout(){
+        
+        Session::flush();
+        return redirect()->route('/');
     }
 }

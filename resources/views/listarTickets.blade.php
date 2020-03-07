@@ -1,6 +1,9 @@
 @extends('layout')
 @section('content')
     <script src="{{ asset('js/listar.js') }}"></script>
+    <div style="text-align: right;">
+        <a href="{{route('logout')}}">Cerrar Sesión</a>
+    </div>
     <table class="table">
         <thead>
             <tr>

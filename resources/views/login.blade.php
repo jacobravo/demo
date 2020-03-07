@@ -1,7 +1,6 @@
 <html>
     <head>
         @include('layout')
-        <title>Bienvenido</title>
     </head>
     <body>
         <div class="container">

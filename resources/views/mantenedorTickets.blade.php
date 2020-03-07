@@ -1,8 +1,16 @@
 @extends('layout')
 @section('content')
+    <script src="../resources/js/components/react/react16.13.0.js"></script>
+    <script src="../resources/js/components/react/react-dom16.13.0.js"></script>
+    <script crossorigin src="../resources/js/components/babel.min.js"></script>
+    <script type="text/babel" src="../resources/js/components/componentesTest.js"></script>
+    <div style="text-align: right;">
+        <a href="{{route('logout')}}">Cerrar Sesión</a>
+    </div>
     <input type="button" class="btn btn-success" value="Nuevo ticket" />
     <br>
     <br>
+    <div id="raiz" ></div>
     <table class="table">
         <thead>
             <tr>
@@ -18,11 +26,9 @@
                         <th scope="row">{{$o->id}}</th>
                         <td>{{$o->usuario->nombre}}</td>
                         <td>
-                            <a href="#" onclick="{() => editar({{$o->id}})}">
-                                Editar Ticket
-                            </a>
-                            &nbsp;
-                            <a href="#" onclick="borrar({{$o->id}});">
+                            <div value="{{$o->id}}" id="ed"></div>
+                            
+                            <a href="#" onclick="{() => borrar({{$o->id}})};">
                                 Borrar Ticket
                             </a>
                         </td>
@@ -47,7 +53,7 @@
             </select>
             Contenido:
             <textarea id="contenido_ticket_edit" maxlength="255"></textarea>
-            <input type="button" value="Crear ticket" onclick="guardarEditar({{ csrf_field() }});">
+            <input type="button" value="Crear ticket" onclick="{() => guardarEditar();}">
         </div>
     </div>
 
@@ -65,7 +71,7 @@
             </select>
             Contenido:
             <textarea id="contenido_ticket_nuevo" maxlength="255"></textarea>
-            <input type="button" value="Crear ticket" onclick="guardarNuevo({{ csrf_field() }});">
+            <input type="button" value="Crear ticket" onclick="{() => guardarNuevo();}">
         </div>
     </div>
 @endsection
