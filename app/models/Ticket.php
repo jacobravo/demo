@@ -9,18 +9,16 @@ class Ticket extends Model
 {
 	protected $table = 'ticket';
     protected $primaryKey = 'id';
+    public $timestamps = false;
 
     protected $casts = [
 		'id' => 'int',
-        'id_user' => 'int'
-    ];
-
-    protected $fillable = [
-        'ticket_pedido'
+        'id_user' => 'int',
+        'ticket_pedido' => 'int'
     ];
 
     public function usuario(){
 
-        return $this::belongsto(Usuario::class, 'id', 'id');
+        return $this::belongsto(Usuario::class, 'id_user', 'id');
     }
 }

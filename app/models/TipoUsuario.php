@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class TipoUsuario extends Model
 {
-	protected $table = 'tipo_usuario';
+	  protected $table = 'tipo_usuario';
     protected $primaryKey = 'id';
+    public $timestamps = false;
 
     protected $casts = [
 		'id' => 'int'

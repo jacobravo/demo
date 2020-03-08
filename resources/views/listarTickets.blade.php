@@ -9,8 +9,8 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Usuario</th>
-                <th scope="col">Solicitud</th>
-                <th scope="col">Acción</th>
+                <th scope="col">Pedido</th>
+                <th scope="col">Pedir ticket</th>
             </tr>
         </thead>
         <tbody>
@@ -19,9 +19,13 @@
                     <tr>
                         <th scope="row">{{$o->id}}</th>
                         <td>{{$o->usuario->nombre}}</td>
-                        <td>{{$o->ticket_pedido}}</td>
+                        @if($o->ticket_pedido != 0)
+                            <td><img style="width: 40px;" src="visto.jfif"></td>
+                        @else
+                            <td></td>
+                        @endif
                         <td>
-                            <a href="#" onclick="pedirTicket({{$o->id}},{{$o->usuario->id}})">
+                            <a href="#" onclick="pedirTicket({{ $o->id}},{{$o->usuario->id}})">
                                 Pedir Ticket
                             </a>
                         </td>

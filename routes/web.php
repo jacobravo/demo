@@ -6,13 +6,11 @@ Route::get('/', 'LoginController@index')->name('/');
 
 Route::post('login', 'LoginController@login')->name('login');
 
+Route::post('creaUsuario', 'LoginController@creaUsuario')->name('creaUsuario');
+
 Route::get('logout', 'LoginController@logout')->name('logout');
 
 Route::get('redirigir', 'TicketController@index')->name('redirigir');
-
-Route::get('gestionTickets', 'TicketController@gestionIndex')->name('gestionTickets');
-
-Route::get('listarTickets', 'TicketController@listarIndex')->name('listarTickets');
 
 Route::post('pedirTicket', 'TicketController@pedirTicket')->name('pedirTicket');
 

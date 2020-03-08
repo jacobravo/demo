@@ -24,7 +24,7 @@ class TicketController extends Controller
 
                 $obj = Ticket::all();
 
-                $usuarios = Usuario::all();
+                $usuarios = Usuario::where('id', '!=', Session::get('usuario')->id)->get();
 
                 return view('mantenedorTickets', compact('obj', 'usuarios'));
             }
@@ -48,12 +48,14 @@ class TicketController extends Controller
 
         try{
             $id = $request->get('id');
-            $idUsuario = $request->get('usuario');
+            $ticket_pedido = $request->get('usuario');
 
             $obj = Ticket::findorfail($id);
 
-            $obj->id_user = $idUsuario;
+            $obj->ticket_pedido = $ticket_pedido;
             $obj->save();
+
+            return "Ticket asignado exitosamente";
 
         }
         catch(Exception $ex){
@@ -66,14 +68,14 @@ class TicketController extends Controller
         try{
             $id = $request->get('id');
             $idUsuario = $request->get('usuario');
-            $contenido = $request->get('contenido_ticket');
 
             $obj = Ticket::findorfail($id);
 
             $obj->id_user = $idUsuario;
-            $obj->ticket_pedido = $contenido;
 
             $obj->save();
+
+            return "Registro editado exitosamente";
 
         }
         catch(Exception $ex){
@@ -89,6 +91,8 @@ class TicketController extends Controller
             $obj = Ticket::findorfail($id);
             $obj->delete();
 
+            return "Registro eliminado exitosamente";
+
         }
         catch(Exception $ex){
             return $ex->getMessage();
@@ -99,18 +103,19 @@ class TicketController extends Controller
 
         try{
             $idUsuario = $request->get('usuario');
-            $contenido = $request->get('contenido_ticket');
 
             $obj = new Ticket();
 
             $obj->id_user = $idUsuario;
-            $obj->ticket_pedido = $contenido;
 
             $obj->save();
+
+            return "Registro creado exitosamente";
 
         }
         catch(Exception $ex){
             return $ex->getMessage();
         }
     }
+
 }

@@ -1,13 +1,10 @@
 @extends('layout')
 @section('content')
-    <script src="../resources/js/components/react/react16.13.0.js"></script>
-    <script src="../resources/js/components/react/react-dom16.13.0.js"></script>
-    <script crossorigin src="../resources/js/components/babel.min.js"></script>
-    <script type="text/babel" src="../resources/js/components/componentesTest.js"></script>
+    <script type="text/javascript" src="{{ asset('js/mantenedor.js') }}"></script>
     <div style="text-align: right;">
         <a href="{{route('logout')}}">Cerrar Sesión</a>
     </div>
-    <input type="button" class="btn btn-success" value="Nuevo ticket" />
+    <a href="#nuevo_modal" rel="modal:open" class="btn btn-success">Nuevo Ticket</a>
     <br>
     <br>
     <div id="raiz" ></div>
@@ -26,9 +23,11 @@
                         <th scope="row">{{$o->id}}</th>
                         <td>{{$o->usuario->nombre}}</td>
                         <td>
-                            <div value="{{$o->id}}" id="ed"></div>
-                            
-                            <a href="#" onclick="{() => borrar({{$o->id}})};">
+                            <a href="#editar_modal" rel="modal:open" onclick="editar({{$o->id}});">
+                                Editar Ticket
+                            </a>
+                            &nbsp;
+                            <a href="#" onclick="borrar({{$o->id}});">
                                 Borrar Ticket
                             </a>
                         </td>
@@ -38,12 +37,12 @@
         </tbody>
     </table>
 
-    <div id="editar_modal" style="display: none">
+    <div id="editar_modal" class="modal" style="display: none; position: sticky; overflow: initial; height: auto;">
         <input type="hidden" value="" id="id_editar">
-        <div class="container">
+        <div class="container" style="text-align: center">
             <h5>Editar ticket</h5>
             Asignar Usuario:
-            <select id="usuario_edit">
+            <select id="usuario_edit" class="form-control">
                 <option value="">Seleccione...</option>
                 @if($usuarios->count() > 0)
                     @foreach ($usuarios as $u)
@@ -51,17 +50,16 @@
                     @endforeach
                 @endif
             </select>
-            Contenido:
-            <textarea id="contenido_ticket_edit" maxlength="255"></textarea>
-            <input type="button" value="Crear ticket" onclick="{() => guardarEditar();}">
+            <br>
+            <input type="button" class="btn btn-success" value="Guardar ticket" onclick="guardarEditar();">
         </div>
     </div>
 
-    <div id="nuevo_modal" style="display: none">
-        <div class="container">
+    <div id="nuevo_modal" class="modal" style="display: none; position: sticky; overflow: initial; height: auto;">
+        <div class="container" style="text-align: center">
             <h5>Nuevo ticket</h5>
             Asignar usuario:
-            <select id="usuario_nuevo">
+            <select id="usuario_nuevo" class="form-control">
                 <option value="">Seleccione...</option>
                 @if($usuarios->count() > 0)
                     @foreach ($usuarios as $u)
@@ -69,9 +67,8 @@
                     @endforeach
                 @endif
             </select>
-            Contenido:
-            <textarea id="contenido_ticket_nuevo" maxlength="255"></textarea>
-            <input type="button" value="Crear ticket" onclick="{() => guardarNuevo();}">
+            <br>
+            <input type="button" class="btn btn-success" value="Crear ticket" onclick="guardarNuevo();">
         </div>
     </div>
 @endsection

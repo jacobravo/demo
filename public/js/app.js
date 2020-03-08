@@ -37052,20 +37052,11 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes React and other helpers. It's a great starting point while
- * building robust, powerful web applications using React + Laravel.
- */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+/* WEBPACK VAR INJECTION */(function(__dirname) {__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-
-__webpack_require__(/*! ./components/ComponentesTest.js */ "./resources/js/components/ComponentesTest.js");
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use('/jquery-ui', express.static(__dirname + '/node_modules/jquery-ui/build/'));
+/* WEBPACK VAR INJECTION */}.call(this, "/"))
 
 /***/ }),
 
@@ -37111,120 +37102,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/components/ComponentesTest.js":
-/*!****************************************************!*\
-  !*** ./resources/js/components/ComponentesTest.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-var ComponentesTest = /*#__PURE__*/function (_React$Component) {
-  _inherits(ComponentesTest, _React$Component);
-
-  function ComponentesTest() {
-    _classCallCheck(this, ComponentesTest);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(ComponentesTest).apply(this, arguments));
-  }
-
-  _createClass(ComponentesTest, [{
-    key: "editar",
-    value: function editar() {
-      document.getElementById('id_editar').value = document.getElementById('ed').value;
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return React.createElement("a", {
-        href: "#",
-        onClick: this.editar
-      }, "Editar Ticket");
-    }
-  }]);
-
-  return ComponentesTest;
-}(React.Component);
-
-React.render(React.createElement(ComponentesTest, null), document.getElementById('ed'));
-/*
-function editar(props) {
-    return <h1>Hello, {props.name}</h1>;
-
-    /*function handleClick(e) {
-        e.preventDefault();
-        document.getElementById('id_editar').setAttribute('value', id);
-        cont = document.getElementById('editar_modal').innerHTML;
-
-    }
-    return console.log("asdfdsf");
-}
-const element = <Welcome name="Sara" />;
-ReactDOM.render(
-  element,
-  document.getElementById('raiz')
-);*/
-//ReactDOM.render( < ComponentesTest / > );
-//export default editar;
-
-/*editar(id) {
-
-        document.getElementById('id_editar').setAttribute('value', id);
-
-        cont = document.getElementById('editar_modal').innerHTML;
-        modal(cont);
-
-        render(modal);
-    }
-
-    modal(cont) {
-        const [show, setShow] = useState(false);
-
-        const handleClose = () => setShow(false);
-        const handleShow = () => setShow(true);
-
-        return (cont);
-    }
-
-    guardarEditar(token) {
-        fetch('editarTicket', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                _token: token,
-                id: document.getElementById('id_editar').value,
-                usuario: document.getElementById('usuario_edit').value,
-                contenido_ticket: document.getElementById('contenido_ticket_edit').value
-            }, function(data) {
-                alert.alert(data);
-            })
-        })
-    }
-}
-export default ComponentesTest*/
 
 /***/ }),
 
